@@ -1,8 +1,12 @@
 <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
 <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-<%= form_with url: session_path do |form| %>
-  <%= tag.div class: "form-group" do %>
+<%= tag.div class: "card flex flex-col gap mb-4" do %>
+  <%= tag.div class: "card__header" do %>
+    <%= tag.h1 "Sign in", class: "font-semibold leading-none mbe-1 text-2xl" %>
+  <% end %>
+  <%= form_with url: session_path do |form| %>
+    <%= tag.div class: "form-group" do %>
     <%= form.label :email_address, "Email", class: "form-label" %>
     <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "input" %>
   <% end %>
@@ -12,7 +16,8 @@
   <% end %>
   <%= tag.div class: "flex items-center justify-between" do %>
     <%= form.submit "Sign in", class: "btn btn--primary" %>
-    <%= link_to "Forgot password?", new_password_path %>
+      <%= link_to "Forgot password?", new_password_path %>
+    <% end %>
   <% end %>
 <% end %>
 

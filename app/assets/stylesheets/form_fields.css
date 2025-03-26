@@ -5,7 +5,7 @@
 .form-label {
   display: block;
   margin-block-end: var(--size-1);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: var(--font-medium);
 }
 
