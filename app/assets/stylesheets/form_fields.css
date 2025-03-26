@@ -1,0 +1,15 @@
+.form-group {
+  margin-block-end: var(--size-4);
+}
+
+.form-label {
+  display: block;
+  margin-block-end: var(--size-1);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+}
+
+.form-label--required::after {
+  content: " *";
+  color: var(--color-negative);
+}
