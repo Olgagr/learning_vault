@@ -1,0 +1,15 @@
+<% if @categories.any? %>
+  <div class="table-list">
+    <%= tag.div class: "table-list--header" do %>
+      <%= tag.p "Name", class: "table-list--header-item table-list--item" %>
+      <%= tag.p "Description", class: "table-list--header-item table-list--item" %>
+      <%= tag.p "", class: "table-list--header-item table-list--item" %>
+    <% end %>
+    <% @categories.each do |category| %>
+      <%= render "category", category: category %>
+    <% end %>
+  </div>
+<% else %>
+  <p>No categories found</p>
+  <%= link_to "Create a category", new_category_path %>
+<% end %>

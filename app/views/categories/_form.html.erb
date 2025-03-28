@@ -1,0 +1,14 @@
+<%= form_with model: @category do |form| %>
+  <%= tag.div class: "form-group" do %>
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "input", required: true %>
+  <% end %>
+  <%= tag.div class: "form-group" do %>
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "input" %>
+  <% end %>
+  <%= tag.div class: "flex items-center justify-between" do %>
+    <%= form.submit "Create category", class: "btn btn--primary" %>
+    <%= link_to "Cancel", categories_path, class: "btn btn--secondary" %>
+  <% end %>
+<% end %>

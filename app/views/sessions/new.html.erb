@@ -7,17 +7,17 @@
   <% end %>
   <%= form_with url: session_path do |form| %>
     <%= tag.div class: "form-group" do %>
-    <%= form.label :email_address, "Email", class: "form-label" %>
-    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "input" %>
-  <% end %>
-  <%= tag.div class: "form-group" do %>
-    <%= form.label :password, "Password", class: "form-label" %>
-    <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "input" %>
-  <% end %>
-  <%= tag.div class: "flex items-center justify-between" do %>
-    <%= form.submit "Sign in", class: "btn btn--primary" %>
-      <%= link_to "Forgot password?", new_password_path %>
+      <%= form.label :email_address, "Email", class: "form-label" %>
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "input" %>
     <% end %>
-  <% end %>
+    <%= tag.div class: "form-group" do %>
+      <%= form.label :password, "Password", class: "form-label" %>
+      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "input" %>
+    <% end %>
+    <%= tag.div class: "flex items-center justify-between" do %>
+      <%= form.submit "Sign in", class: "btn btn--primary" %>
+        <%= link_to "Forgot password?", new_password_path %>
+      <% end %>
+    <% end %>
 <% end %>
 
