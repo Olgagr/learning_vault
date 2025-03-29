@@ -1,3 +1,7 @@
+<h1 class="page-title">Categories</h1>
+<div class="flex justify-end">
+  <%= button_to "Create a category", new_category_path, method: :get, class: "btn btn--primary", data: { turbo_frame: "modal" } %>
+</div>
 <% if @categories.any? %>
   <div class="table-list">
     <%= tag.div class: "table-list--header" do %>

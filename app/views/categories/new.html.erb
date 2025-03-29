@@ -1,1 +1,5 @@
-<%= render "form" %>
+<%= turbo_frame_tag "modal" do %>
+  <%= render "shared/dialog", title: "Create a category" do %>
+    <%= render "form" %>
+  <% end %>
+<% end %>

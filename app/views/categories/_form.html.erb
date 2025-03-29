@@ -9,6 +9,8 @@
   <% end %>
   <%= tag.div class: "flex items-center justify-between" do %>
     <%= form.submit "Create category", class: "btn btn--primary" %>
-    <%= link_to "Cancel", categories_path, class: "btn btn--secondary" %>
+    <%= tag.button type: "button", class: "btn btn--secondary", data: { action: "click->modal#close" } do %>
+      Cancel
+    <% end %>
   <% end %>
 <% end %>
