@@ -13,6 +13,6 @@ class CreateResources < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :resources, [:user_id, :name], unique: true
+    add_index :resources, [ :user_id, :name ], unique: true
   end
 end
