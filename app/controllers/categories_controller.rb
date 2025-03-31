@@ -20,6 +20,24 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def edit
+    @category = Current.user.categories.find(params[:id])
+  end
+
+  def update
+    @category = Current.user.categories.find(params[:id])
+
+    if @category.update(category_params)
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = "Category updated successfully" }
+        format.html { redirect_to categories_path, notice: "Category updated successfully" }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+
   def destroy
     @category = Current.user.categories.find(params[:id])
     @category.destroy
