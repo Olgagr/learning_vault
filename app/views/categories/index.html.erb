@@ -4,14 +4,16 @@
 </div>
 <% if @categories.any? %>
   <div class="table-list">
-    <%= tag.div class: "table-list--header" do %>
-      <%= tag.p "Name", class: "table-list--header-item table-list--item" %>
-      <%= tag.p "Description", class: "table-list--header-item table-list--item" %>
-      <%= tag.p "", class: "table-list--header-item table-list--item" %>
-    <% end %>
-    <% @categories.each do |category| %>
-      <%= render "category", category: category %>
-    <% end %>
+    <div class="table-list__header">
+      <div class="table-list__cell">Name</div>
+      <div class="table-list__cell">Description</div>
+      <div class="table-list__cell"></div>
+    </div>
+    <div id="categories" class="table-list__body">
+      <% @categories.each do |category| %>
+        <%= render "category", category: category %>
+      <% end %>
+    </div>
   </div>
 <% else %>
   <p>No categories found</p>

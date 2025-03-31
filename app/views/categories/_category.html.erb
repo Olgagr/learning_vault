@@ -1,7 +1,7 @@
-<div class="table-list--row">
-  <%= tag.p category.name, class: "table-list--item" %>
-  <%= tag.p category.description, class: "table-list--item" %>
-  <%= tag.div class: "table-list--item" do %>
+<div class="table-list__row">
+  <%= tag.p category.name, class: "table-list__cell" %>
+  <%= tag.p category.description, class: "table-list__cell" %>
+  <%= tag.div class: "table-list__cell" do %>
     <%= tag.div class: "flex gap justify-end" do %>
       <%= link_to edit_category_path(category) do %>
         <%= lucide_icon('pencil') %>

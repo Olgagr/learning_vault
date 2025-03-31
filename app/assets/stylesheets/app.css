@@ -3,35 +3,3 @@
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--size-4);
 }
-
-.table-list {
-  display: table;
-  width: 100%;
-}
-
-.table-list--header {
-  display: table-header-group;
-}
-
-.table-list--header-item {
-  color: var(--color-text-subtle);
-}
-
-.table-list--row {
-  display: table-row;
-}
-
-.table-list--item {
-  display: table-cell;
-  vertical-align: middle;
-  padding: var(--size-3);
-  border-bottom: 1px solid var(--color-border);
-
-  &:last-child {
-    padding-right: 0;
-  }
-
-  &:first-child {
-    padding-left: 0;
-  }
-}

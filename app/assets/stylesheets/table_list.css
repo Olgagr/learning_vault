@@ -1,0 +1,35 @@
+.table-list {
+  display: table;
+  width: 100%;
+}
+
+.table-list__header {
+  display: table-header-group;
+}
+
+.table-list__header-item {
+  color: var(--color-text-subtle);
+}
+
+.table-list__body {
+  display: table-row-group;
+}
+
+.table-list__row {
+  display: table-row;
+}
+
+.table-list__cell {
+  display: table-cell;
+  vertical-align: middle;
+  padding: var(--size-3);
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+}

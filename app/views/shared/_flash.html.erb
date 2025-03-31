@@ -1,0 +1,5 @@
+<div id="flashes">
+  <% flash.each do |type, message| %>
+    <div class="flash" style="--flash-position: 5rem;" data-controller="element-removal" data-action="animationend->element-removal#remove" role="alert"><%= message %></div>
+  <% end %>
+</div>

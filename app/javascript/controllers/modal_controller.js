@@ -20,4 +20,10 @@ export default class extends Controller {
     this.element.removeAttribute("src");
     this.element.innerHTML = "";
   }
+
+  formSubmit(event) {
+    if (event.detail.success) {
+      this.close();
+    }
+  }
 }

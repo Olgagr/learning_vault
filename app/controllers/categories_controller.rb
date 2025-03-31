@@ -11,9 +11,12 @@ class CategoriesController < ApplicationController
     @category = Current.user.categories.new(category_params)
 
     if @category.save
-      redirect_to categories_path, notice: "Category created successfully"
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = "Category created successfully" }
+        format.html { redirect_to categories_path, notice: "Category created successfully" }
+      end
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

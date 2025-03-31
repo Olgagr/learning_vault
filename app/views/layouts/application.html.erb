@@ -42,9 +42,7 @@
     </header>
 
     <main id="main">
-      <% if notice.present? %>
-        <div popover class="flash" style="--flash-position: 5rem;" data-controller="element-removal" data-action="animationend->element-removal#remove" role="alert"><%= notice %></div>
-      <% end %>
+      <%= render "shared/flash" %>
       <div class="container">
         <%= yield %>
       </div>
