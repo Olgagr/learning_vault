@@ -1,4 +1,4 @@
-<div class="table-list__row">
+<div class="table-list__row" id="<%= dom_id(category) %>">
   <%= tag.p category.name, class: "table-list__cell" %>
   <%= tag.p category.description, class: "table-list__cell" %>
   <%= tag.div class: "table-list__cell" do %>
@@ -6,7 +6,7 @@
       <%= link_to edit_category_path(category) do %>
         <%= lucide_icon('pencil') %>
       <% end %>
-      <%= button_to category_path(category), method: :delete, class: "cursor-pointer block", data: { confirm: "Are you sure you want to delete this category?" } do %>
+      <%= button_to category_path(category), method: :delete, class: "cursor-pointer block", data: { turbo_confirm: "Are you sure you want to delete this category?" } do %>
         <%= lucide_icon('trash-2') %>
       <% end %>
     <% end %>

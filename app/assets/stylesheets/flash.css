@@ -1,6 +1,6 @@
 .flash {
   align-items: center;
-  /* animation: appear-then-fade 4s 300ms both; */
+  animation: appear-then-fade 4s 300ms both;
   backdrop-filter: var(--blur-sm) var(--contrast-75);
   background-color: var(
     --flash-background,

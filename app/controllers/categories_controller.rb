@@ -20,6 +20,16 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @category = Current.user.categories.find(params[:id])
+    @category.destroy
+
+    respond_to do |format|
+      format.turbo_stream { flash.now[:notice] = "Category deleted successfully" }
+      format.html { redirect_to categories_path, notice: "Category deleted successfully" }
+    end
+  end
+
   private
 
   def category_params
