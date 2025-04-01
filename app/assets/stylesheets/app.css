@@ -3,3 +3,7 @@
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--size-4);
 }
+
+.top-menu {
+  --column-gap: 1rem;
+}

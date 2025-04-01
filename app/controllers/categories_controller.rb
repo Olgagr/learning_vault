@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [ :edit, :update, :destroy ]
+
   def index
     @categories = Current.user.categories
   end
@@ -21,12 +23,9 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Current.user.categories.find(params[:id])
   end
 
   def update
-    @category = Current.user.categories.find(params[:id])
-
     if @category.update(category_params)
       respond_to do |format|
         format.turbo_stream { flash.now[:notice] = "Category updated successfully" }
@@ -39,7 +38,6 @@ class CategoriesController < ApplicationController
 
 
   def destroy
-    @category = Current.user.categories.find(params[:id])
     @category.destroy
 
     respond_to do |format|
@@ -52,5 +50,9 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name, :description)
+  end
+
+  def set_category
+    @category = Current.user.categories.find(params[:id])
   end
 end

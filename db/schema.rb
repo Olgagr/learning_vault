@@ -21,13 +21,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_28_134906) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
-  create_table "category_resources", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "resource_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_category_resources_on_category_id"
-    t.index ["resource_id"], name: "index_category_resources_on_resource_id"
+  create_table "categories_resources", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "resource_id"
+    t.index ["category_id", "resource_id"], name: "index_categories_resources_on_category_id_and_resource_id", unique: true
+    t.index ["category_id"], name: "index_categories_resources_on_category_id"
+    t.index ["resource_id"], name: "index_categories_resources_on_resource_id"
   end
 
   create_table "resources", force: :cascade do |t|
@@ -66,8 +65,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_28_134906) do
   end
 
   add_foreign_key "categories", "users"
-  add_foreign_key "category_resources", "categories"
-  add_foreign_key "category_resources", "resources"
   add_foreign_key "resources", "users"
   add_foreign_key "sessions", "users"
 end
