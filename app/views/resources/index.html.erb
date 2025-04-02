@@ -1,24 +1,26 @@
 <h1 class="page-title">Resources</h1>
 
-<div class="flex justify-end">
+<div class="flex justify-end mbe-6">
   <%= button_to "Create a resource", new_resource_path, method: :get, class: "btn btn--primary", data: { turbo_frame: "modal" } %>
 </div>
 
 <% if @resources.any? %>
-  <div class="table-list">
-    <div class="table-list__header">
-      <div class="table-list__cell">Name</div>
-      <div class="table-list__cell">Type</div>
-      <div class="table-list__cell">Status</div>
-      <div class="table-list__cell">Categories</div>
-      <div class="table-list__cell">Actions</div>
-    </div>
-    <div class="table-list__body" id="resources">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Categories</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="resources">
       <% @resources.each do |resource| %>
         <%= render "resource", resource: resource %>
       <% end %>
-    </div>
-  </div>
+    </tbody>
+  </table>
 <% else %>
   <div id="resources"></div>
   <p id="no-resources">No resources found</p>

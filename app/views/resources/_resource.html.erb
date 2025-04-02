@@ -1,16 +1,16 @@
-<div class="table-list__row" id="<%= dom_id(resource) %>">
-  <%= tag.p resource.name, class: "table-list__cell" %>
-  <%= tag.p resource.resource_type.humanize, class: "table-list__cell" %>
-  <%= tag.p resource.progress_status.humanize, class: "table-list__cell" %>
-  <%= tag.p resource.categories.map(&:name).join(", "), class: "table-list__cell" %>
-  <%= tag.div class: "table-list__cell" do %>
-    <%= tag.div class: "flex gap justify-end" do %>
+<tr id="<%= dom_id(resource) %>">
+  <td><%= resource.name %></td>
+  <td><%= resource.resource_type.humanize %></td>
+  <td><%= resource.progress_status.humanize %></td>
+  <td><%= resource.categories.map(&:name).join(", ") %></td>
+  <td>
+    <div class="flex gap justify-end">
       <%= link_to edit_resource_path(resource), data: { turbo_frame: "modal" } do %>
         <%= lucide_icon('pencil') %>
       <% end %>
       <%= button_to resource_path(resource), method: :delete, class: "cursor-pointer block", data: { turbo_confirm: "Are you sure you want to delete this resource?" } do %>
         <%= lucide_icon('trash-2') %>
       <% end %>
-    <% end %>
-  <% end %>
-</div>
+    </div>
+  </td>
+</tr>
