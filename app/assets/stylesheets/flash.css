@@ -1,6 +1,13 @@
+#flashes {
+  position: absolute;
+  top: 0;
+  right: var(--size-2);
+  z-index: 10;
+}
+
 .flash {
   align-items: center;
-  animation: appear-then-fade 4s 300ms both;
+  animation: appear-then-fade 4s 100ms both;
   backdrop-filter: var(--blur-sm) var(--contrast-75);
   background-color: var(
     --flash-background,
@@ -16,8 +23,11 @@
   margin-block-start: var(--flash-position, var(--size-4));
   margin-inline: auto;
   min-block-size: var(--size-11);
+  width: fit-content;
+  block-size: fit-content;
   padding: var(--size-1) var(--size-4);
   text-align: center;
+  white-space: nowrap;
 
   [data-turbo-preview] & {
     display: none;

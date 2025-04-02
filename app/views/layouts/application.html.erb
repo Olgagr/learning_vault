@@ -24,24 +24,26 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="header-layout">
-    <header id="header">
-      <div class="flex justify-between items-center container">
-        <h1 class="font-bold text-2xl mie-4">Learning Vault</h1>
-        <% if authenticated? %>
-          <div class="flex items-center gap">
-            <%= render "shared/top_menu" %>
-          </div>
-        <% end %>
-      </div>
-    </header>
+  <body>
+    <%= render "shared/flash" %>
+    <div class="header-layout">
+      <header id="header">
+        <div class="flex justify-between items-center container">
+          <h1 class="font-bold text-2xl mie-4">Learning Vault</h1>
+          <% if authenticated? %>
+            <div class="flex items-center gap">
+              <%= render "shared/top_menu" %>
+            </div>
+          <% end %>
+        </div>
+      </header>
 
-    <main id="main">
-      <%= render "shared/flash" %>
-      <div class="container">
-        <%= yield %>
-      </div>
-    </main>
+      <main id="main">
+        <div class="container">
+          <%= yield %>
+        </div>
+      </main>
+    </div>
     <%= turbo_frame_tag "modal", data: { controller: "modal" } %>
   </body>
 </html>

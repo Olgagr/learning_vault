@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [ :edit, :update, :destroy ]
 
   def index
-    @categories = Current.user.categories
+    @categories = Current.user.categories.order(created_at: :desc)
   end
 
   def new
@@ -14,8 +14,8 @@ class CategoriesController < ApplicationController
 
     if @category.save
       respond_to do |format|
-        format.turbo_stream { flash.now[:notice] = "Category created successfully" }
-        format.html { redirect_to categories_path, notice: "Category created successfully" }
+        format.turbo_stream { flash.now[:notice] = "Category created" }
+        format.html { redirect_to categories_path, notice: "Category created" }
       end
     else
       render :new, status: :unprocessable_entity
@@ -28,8 +28,8 @@ class CategoriesController < ApplicationController
   def update
     if @category.update(category_params)
       respond_to do |format|
-        format.turbo_stream { flash.now[:notice] = "Category updated successfully" }
-        format.html { redirect_to categories_path, notice: "Category updated successfully" }
+        format.turbo_stream { flash.now[:notice] = "Category updated" }
+        format.html { redirect_to categories_path, notice: "Category updated" }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -41,8 +41,8 @@ class CategoriesController < ApplicationController
     @category.destroy
 
     respond_to do |format|
-      format.turbo_stream { flash.now[:notice] = "Category deleted successfully" }
-      format.html { redirect_to categories_path, notice: "Category deleted successfully" }
+      format.turbo_stream { flash.now[:notice] = "Category deleted" }
+      format.html { redirect_to categories_path, notice: "Category deleted" }
     end
   end
 
