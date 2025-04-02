@@ -1,4 +1,6 @@
 class ResourcesController < ApplicationController
+  before_action :set_resource, only: [ :edit, :update, :destroy ]
+
   def index
     @resources = Current.user.resources
   end
@@ -22,13 +24,10 @@ class ResourcesController < ApplicationController
   end
 
   def edit
-    @resource = Current.user.resources.find(params[:id])
     @categories = Current.user.categories
   end
 
   def update
-    @resource = Current.user.resources.find(params[:id])
-
     if @resource.update(resource_params)
       respond_to do |format|
         format.turbo_stream { flash.now[:notice] = "Resource updated successfully" }
@@ -36,6 +35,14 @@ class ResourcesController < ApplicationController
       end
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @resource.destroy
+    respond_to do |format|
+      format.turbo_stream { flash.now[:notice] = "Resource deleted successfully" }
+      format.html { redirect_to resources_path, notice: "Resource deleted successfully" }
     end
   end
 
@@ -51,5 +58,9 @@ class ResourcesController < ApplicationController
       :owned,
       category_ids: []
     )
+  end
+
+  def set_resource
+    @resource = Current.user.resources.find(params[:id])
   end
 end
