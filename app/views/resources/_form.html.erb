@@ -13,22 +13,22 @@
   <% end %>
   <%= tag.div class: "form-group" do %>
     <%= form.label :category_ids, class: "form-label" %>
-    <%= form.collection_select :category_ids, @categories, :id, :name, { selected: [] }, { multiple: true, data: { controller: "combobox" } } %>
+    <%= form.collection_select :category_ids, @categories, :id, :name, { selected: @resource.category_ids }, { multiple: true, data: { controller: "combobox" } } %>
   <% end %>
   <%= tag.div class: "form-group" do %>
     <%= form.label :resource_type, class: "form-label" %>
-    <%= form.select :resource_type, Resource.resource_types.keys.map { |key| [key.humanize, key] }, {}, { data: { controller: "combobox" } } %>
+    <%= form.select :resource_type, Resource.resource_types.keys.map { |key| [key.humanize, key] }, { selected: @resource.resource_type }, { data: { controller: "combobox" } } %>
   <% end %>
   <%= tag.div class: "form-group" do %>
     <%= form.label :progress_status, class: "form-label" %>
-    <%= form.select :progress_status, Resource.progress_statuses.keys.map { |key| [key.humanize, key] }, {}, { data: { controller: "combobox" } } %>
+    <%= form.select :progress_status, Resource.progress_statuses.keys.map { |key| [key.humanize, key] }, { selected: @resource.progress_status }, { data: { controller: "combobox" } } %>
   <% end %>
   <%= tag.div class: "form-group" do %>
     <%= form.label :owned, class: "form-label" %>
     <%= form.check_box :owned %>
   <% end %>
   <%= tag.div class: "flex items-center justify-between" do %>
-    <%= form.submit "Create", class: "btn btn--primary" %>
+    <%= form.submit "Save", class: "btn btn--primary" %>
     <%= tag.button type: "button", class: "btn btn--secondary", data: { action: "click->modal#close" } do %>
       Cancel
     <% end %>
