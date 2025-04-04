@@ -1,8 +1,8 @@
 <%= tag.div class: "card flex flex-col gap mb-4" do %>
   <%= tag.div class: "card__header" do %>
-    <%= tag.h1 "Sign in", class: "font-semibold leading-none mbe-1 text-2xl" %>
+    <%= tag.h1 "Create an account", class: "font-semibold leading-none mbe-1 text-2xl" %>
   <% end %>
-  <%= form_with url: session_path do |form| %>
+  <%= form_with model: @user do |form| %>
     <%= tag.div class: "form-group" do %>
       <%= form.label :email_address, "Email", class: "form-label" %>
       <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "input" %>
@@ -12,9 +12,7 @@
       <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "input" %>
     <% end %>
     <%= tag.div class: "flex items-center justify-between" do %>
-      <%= form.submit "Sign in", class: "btn btn--primary" %>
-      <%= link_to "Forgot password?", new_password_path %>
+      <%= form.submit "Sign up", class: "btn btn--primary" %>
     <% end %>
   <% end %>
 <% end %>
-

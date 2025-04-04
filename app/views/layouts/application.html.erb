@@ -34,6 +34,12 @@
             <div class="flex items-center gap">
               <%= render "shared/top_menu" %>
             </div>
+          <% else %>
+            <% if request.path != new_users_path %>
+              <%= link_to "Sign up", new_users_path %>
+            <% else %>
+              <%= link_to "Sign in", new_session_path %>
+            <% end %>
           <% end %>
         </div>
       </header>

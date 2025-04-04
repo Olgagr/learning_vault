@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resource :session
+  resource :users, only: %i[ new create ]
   resources :passwords, param: :token
   resources :categories
   resources :resources
