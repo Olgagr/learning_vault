@@ -4,24 +4,20 @@
   <%= button_to "Create a resource", new_resource_path, method: :get, class: "btn btn--primary", data: { turbo_frame: "modal" } %>
 </div>
 
-<% if @resources.any? %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Status</th>
-        <th>Categories</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody id="resources">
-      <% @resources.each do |resource| %>
-        <%= render "resource", resource: resource %>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <div id="resources"></div>
-  <p id="no-resources">No resources found</p>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Categories</th>
+      <th></th>
+    </tr>
+  </thead>
+  <%= tag.tbody id: "resources" do -%>
+    <% @resources.each do |resource| %>
+      <%= render "resource", resource: resource %>
+    <% end %>
+  <%- end -%>
+</table>
+<p class="empty-table-message">No resources found</p>

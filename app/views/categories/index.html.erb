@@ -2,22 +2,18 @@
 <div class="flex justify-end mbe-6">
   <%= button_to "Create a category", new_category_path, method: :get, class: "btn btn--primary", data: { turbo_frame: "modal" } %>
 </div>
-<% if @categories.any? %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th class="text-end"></th>
-      </tr>
-    </thead>
-    <tbody id="categories">
-      <% @categories.each do |category| %>
-        <%= render "category", category: category %>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No categories found</p>
-  <%= link_to "Create a category", new_category_path %>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th class="text-end"></th>
+    </tr>
+  </thead>
+  <%= tag.tbody id: "categories" do -%>
+    <% @categories.each do |category| %>
+      <%= render "category", category: category %>
+    <% end %>
+  <%- end -%>
+</table>
+<p class="empty-table-message">No categories found</p>

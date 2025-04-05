@@ -17,7 +17,7 @@
   }
 
   tr:hover {
-    background-color: rgb(from var(--color-border-light) r g b / .5);
+    background-color: rgb(from var(--color-border-light) r g b / 0.5);
   }
 
   th {
@@ -25,13 +25,27 @@
     text-align: start;
   }
 
-  th, td {
+  th,
+  td {
     padding: var(--size-2);
   }
 
   tfoot {
-    background-color: rgb(from var(--color-border-light) r g b / .5);
+    background-color: rgb(from var(--color-border-light) r g b / 0.5);
     border-block-start-width: var(--border);
     font-weight: var(--font-medium);
   }
+}
+
+.empty-table-message {
+  display: none;
+  text-align: center;
+}
+
+.table:has(tbody:empty) {
+  display: none;
+}
+
+.table:has(tbody:empty) + .empty-table-message {
+  display: block;
 }
