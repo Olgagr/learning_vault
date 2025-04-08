@@ -21,7 +21,7 @@ export default class extends Controller {
     this.element.innerHTML = "";
   }
 
-  formSubmit(event) {
+  onSubmitEnd(event) {
     if (event.detail.success) {
       this.close();
     }

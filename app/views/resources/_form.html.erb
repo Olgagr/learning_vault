@@ -1,36 +1,42 @@
-<%= form_with model: @resource, data: { action: "turbo:submit-end->modal#formSubmit" } do |form| %>
-  <%= tag.div class: "form-group" do %>
-    <%= form.label :name, class: "form-label" %>
-    <%= form.text_field :name, class: "input", required: true %>
-  <% end %>
-  <%= tag.div class: "form-group" do %>
-    <%= form.label :description, class: "form-label" %>
-    <%= form.text_area :description, class: "input" %>
-  <% end %>
-  <%= tag.div class: "form-group" do %>
-    <%= form.label :link, class: "form-label" %>
-    <%= form.text_field :link, class: "input", required: true %>
-  <% end %>
-  <%= tag.div class: "form-group" do %>
-    <%= form.label :category_ids, class: "form-label" %>
-    <%= form.collection_select :category_ids, @categories, :id, :name, { selected: @resource.category_ids }, { multiple: true, data: { controller: "combobox" } } %>
-  <% end %>
-  <%= tag.div class: "form-group" do %>
-    <%= form.label :resource_type, class: "form-label" %>
-    <%= form.select :resource_type, Resource.resource_types.keys.map { |key| [key.humanize, key] }, { selected: @resource.resource_type }, { data: { controller: "combobox" } } %>
-  <% end %>
-  <%= tag.div class: "form-group" do %>
-    <%= form.label :progress_status, class: "form-label" %>
-    <%= form.select :progress_status, Resource.progress_statuses.keys.map { |key| [key.humanize, key] }, { selected: @resource.progress_status }, { data: { controller: "combobox" } } %>
-  <% end %>
-  <%= tag.div class: "form-group" do %>
-    <%= form.label :owned, class: "form-label" %>
-    <%= form.check_box :owned %>
-  <% end %>
-  <%= tag.div class: "flex items-center justify-between" do %>
-    <%= form.submit "Save", class: "btn btn--primary" %>
-    <%= tag.button type: "button", class: "btn btn--secondary", data: { action: "click->modal#close" } do %>
-      Cancel
+<%= form_with model: @resource, data: { action: "turbo:submit-end->modal#onSubmitEnd" } do |form| %>
+  <div data-controller="resource-form">
+    <%= tag.div class: "form-group" do %>
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "input", required: true %>
     <% end %>
-  <% end %>
+    <%= tag.div class: "form-group" do %>
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "input" %>
+    <% end %>
+    <%= tag.div class: "form-group" do %>
+      <%= form.label :link, class: "form-label" %>
+      <%= form.text_field :link, class: "input", required: true %>
+    <% end %>
+    <%= tag.div class: "form-group" do %>
+      <%= form.label :category_ids, class: "form-label" %>
+      <%= form.collection_select :category_ids, @categories, :id, :name, { selected: @resource.category_ids }, { multiple: true, data: { controller: "combobox" } } %>
+    <% end %>
+    <%= tag.div class: "form-group" do %>
+      <%= form.label :resource_type, class: "form-label" %>
+      <%= form.select :resource_type, Resource.resource_types.keys.map { |key| [key.humanize, key] }, { selected: @resource.resource_type }, { data: { controller: "combobox" } } %>
+    <% end %>
+    <%= tag.div class: "form-group" do %>
+      <%= form.label :progress_status, class: "form-label" %>
+      <%= form.select :progress_status, Resource.progress_statuses.keys.map { |key| [key.humanize, key] }, { selected: @resource.progress_status }, { data: { controller: "combobox" } } %>
+    <% end %>
+    <%= tag.div class: "form-group hidden", data: { resource_form_target: "priceFormGroup" } do %>
+      <%= form.label :price, class: "form-label" %>
+      <%= form.text_field :price, class: "input", inputmode: "decimal", placeholder: "0.00", data: { controller: "inputmask", maska_number_fraction: "2", maska_number_unsigned: true } %>
+    <% end %>
+    <%= tag.div class: "form-group form-group__horizontal" do %>
+      <%= form.check_box :owned, data: { action: "click->resource-form#togglePriceFormGroup", resource_form_target: "ownedCheckbox" } %>
+      <%= form.label :owned, class: "form-label" %>
+    <% end %>
+    <%= tag.div class: "flex items-center justify-between" do %>
+      <%= form.submit "Save", class: "btn btn--primary" %>
+      <%= tag.button type: "button", class: "btn btn--secondary", data: { action: "click->modal#close" } do %>
+        Cancel
+      <% end %>
+    <% end %>
+  </div>
 <% end %>

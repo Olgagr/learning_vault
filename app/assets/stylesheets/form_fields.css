@@ -13,3 +13,13 @@
   content: " *";
   color: var(--color-negative);
 }
+
+.form-group__horizontal {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2);
+}
+
+.form-group__horizontal .form-label {
+  margin-block-end: 0;
+}

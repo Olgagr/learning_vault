@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_28_134906) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_08_123320) do
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
@@ -39,6 +39,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_28_134906) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
     t.index ["progress_status"], name: "index_resources_on_progress_status"
     t.index ["resource_type"], name: "index_resources_on_resource_type"
     t.index ["user_id", "name"], name: "index_resources_on_user_id_and_name", unique: true

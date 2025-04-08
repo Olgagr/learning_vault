@@ -56,11 +56,16 @@ class ResourcesController < ApplicationController
       :progress_status,
       :link,
       :owned,
+      :price,
       category_ids: []
-    )
+    ).tap do |params|
+      params[:price] = params[:price].to_f * 100 if params[:price].present?
+    end
   end
 
   def set_resource
-    @resource = Current.user.resources.find(params[:id])
+    @resource = Current.user.resources.find(params[:id]).tap do |resource|
+      resource.price = (resource.price / 100.0).to_s if resource.price.present?
+    end
   end
 end
