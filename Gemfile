@@ -65,4 +65,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "lucide-rails", "~> 0.5.1"
+gem "lucide-rails", "~> 0.7.1"
